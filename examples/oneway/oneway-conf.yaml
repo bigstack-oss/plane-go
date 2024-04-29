@@ -1,0 +1,24 @@
+input:
+  - name: "dummy-in"
+    group: "1"
+    fetchInterval: 5
+
+transit:
+  - name: "dummy-trans"
+    group: "1"
+
+process:
+  - name: "dummy-proc"
+    group: "1"
+
+output:
+  - name: "dummy-out"
+    group: "1"
+
+
+cronjobs:
+  - name: "dummy-cron"
+    schedule: "0 */1 * * * *"
+
+channelSize: 1000
+oneTimeExec: False

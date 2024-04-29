@@ -1,0 +1,29 @@
+interact:
+  name: "http"
+  address: "0.0.0.0"
+  port: 80
+  interfaces:
+  - name: "dummy-interact-get"
+    method: "GET"
+    path: "/apis/v1/dummy"
+    timeout: 10
+    stages:
+    - name: "dummy-transit"
+    - name: "dummy-process"
+    - name: "dummy-request"
+      retry: 3
+  - name: "dummy-interact-post"
+    method: "POST"
+    path: "/apis/v1/dummy"
+    timeout: 10
+    stages:
+    - name: "dummy-transit"
+    - name: "dummy-process"
+    - name: "dummy-request"
+      retry: 3
+
+cronjobs:
+  - name: "dummy"
+    schedule: "0 */1 * * * *"
+    concurrency:
+      allow: false
